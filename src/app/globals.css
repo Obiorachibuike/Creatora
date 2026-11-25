@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ===================================================================
+   Creatora — Official brand tokens (Sunset Orange identity)
+   PART 1 (Design system) of the master product prompt.
+   =================================================================== */
+
+:root {
+  color-scheme: dark;
+  --brand-primary: #ff6b35;
+  --brand-hover: #ff8557;
+  --brand-highlight: #ffaa70;
+
+  --background: #120d0a;
+  --surface: #191512;
+  --surface-elevated: #241710;
+  --surface-muted: #30221a;
+
+  --foreground: #fff7f2;
+  --foreground-muted: #b9a79c;
+
+  --border: #463126;
+
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: #60a5fa;
+
+  --font-display: "Sora", "Inter", system-ui, sans-serif;
+  --font-sans: "DM Sans", "Geist", system-ui, sans-serif;
+  --font-mono: "Geist Mono", "SFMono-Regular", ui-monospace, monospace;
+}
+
+.light,
+[data-theme="light"] {
+  color-scheme: light;
+  --background: #fff7f2;
+  --surface: #fff1e6;
+  --surface-elevated: #fff6ed;
+  --surface-muted: #fbe6d1;
+  --foreground: #120d0a;
+  --foreground-muted: #5a4b42;
+  --border: #e6c9a8;
+}
+
+/* motion: false → disable transitions for reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-muted: var(--surface-muted);
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-border: var(--border);
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-highlight: var(--brand-highlight);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --color-info: var(--info);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-display: var(--font-display);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* Utility helpers used across the app shell. */
+.brand-btn {
+  background-color: var(--brand-primary);
+  color: #120d0a;
+  transition: background-color 0.15s ease;
+}
+.brand-btn:hover {
+  background-color: var(--brand-hover);
+}
+
+@layer components {
+  .card-base {
+    background-color: var(--surface-elevated);
+    border-color: var(--border);
+    border-radius: 1rem;
+  }
+}
