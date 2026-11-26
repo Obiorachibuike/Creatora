@@ -1,5 +1,8 @@
 import Link from "next/link";
 import { auth } from "@/auth";
+import { db } from "@/db";
+import { users } from "@/drizzle/schema";
+import { eq } from "drizzle-orm";
 import { signOut } from "@/auth";
 import { Button } from "@/components/ui/Button";
 
@@ -18,6 +21,7 @@ export async function Nav() {
           <NavLink href="/voice-studio">Voice Studio</NavLink>
           <NavLink href="/exports">Exports</NavLink>
           <NavLink href="/ai-assistant">Assistant</NavLink>
+          {session?.user?.email && await isAdmin(session.user.email) ? <NavLink href="/admin">Admin</NavLink> : null}
         </ul>
         <div className="ml-auto flex items-center gap-3">
           {session ? (
@@ -49,6 +53,11 @@ export async function Nav() {
       </nav>
     </header>
   );
+}
+
+async function isAdmin(email: string) {
+  const row = await db.select({ role: users.role }).from(users).where(eq(users.email, email)).limit(1);
+  return row[0]?.role === "admin";
 }
 
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
