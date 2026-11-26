@@ -90,3 +90,12 @@ npm test             # vitest (brand + provider registry)
 ## 📌 Scope of this delivery
 
 Full 13-milestone build (voice studio, FFmpeg compositor, social-media publishing, full multitrack timeline UX, etc.) is the long tail of the original master prompt. This branch delivers the foundation + core studio flows (auth, dashboard, projects, video studio, asset library, assistant, editor skeleton, API + SSE, credits). Continue on the branch to land the remaining milestones.
+
+## 🚀 Deploy to Vercel
+
+```bash
+vercel
+```
+
+- Create a PostgreSQL database on [Vercel Storage](https://vercel.com/storage) and copy the connection string to `DATABASE_URL`.
+- Run `npx drizzle-kit push` to sync the Drizzle schema to PostgreSQL, or `npx drizzle-kit generate` to create migration SQL files.
