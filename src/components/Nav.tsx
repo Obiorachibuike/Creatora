@@ -15,6 +15,8 @@ export async function Nav() {
           <NavLink href="/">Dashboard</NavLink>
           <NavLink href="/projects">Projects</NavLink>
           <NavLink href="/video-studio">AI Video</NavLink>
+          <NavLink href="/voice-studio">Voice Studio</NavLink>
+          <NavLink href="/exports">Exports</NavLink>
           <NavLink href="/ai-assistant">Assistant</NavLink>
         </ul>
         <div className="ml-auto flex items-center gap-3">
