@@ -21,6 +21,7 @@ export async function Nav() {
           <NavLink href="/voice-studio">Voice Studio</NavLink>
           <NavLink href="/exports">Exports</NavLink>
           <NavLink href="/ai-assistant">Assistant</NavLink>
+          <NavLink href="/creative-director">Creative Director</NavLink>
           {session?.user?.email && await isAdmin(session.user.email) ? <NavLink href="/admin">Admin</NavLink> : null}
         </ul>
         <div className="ml-auto flex items-center gap-3">
