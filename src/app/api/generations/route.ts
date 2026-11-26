@@ -6,6 +6,7 @@ import { getFirstModelByCapability, getProvider } from "@/lib/ai/registry";
 import { mockProvider } from "@/lib/ai/providers";
 import { requireUser, type UserRow } from "@/lib/auth-server";
 import { newId } from "@/lib/auth-utils";
+import { auditLog } from "@/lib/auth-server";
 import { getOrCreateAccount, reserveCredits, settleCredits } from "@/lib/credits";
 import { z } from "zod";
 
@@ -74,6 +75,15 @@ export async function POST(request: Request) {
       startedAt: new Date(),
     })
     .returning();
+
+  await auditLog({
+    userId: user.id,
+    workspaceId,
+    action: "generation.start",
+    resource: "generation",
+    resourceId: generation.id,
+    details: { kind: parsed.data.kind, provider: provider.slug, model: modelName },
+  });
 
   try {
     const result =

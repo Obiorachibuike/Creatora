@@ -1,11 +1,11 @@
-import { count, desc, eq } from "drizzle-orm";
+import { count, desc } from "drizzle-orm";
 import Link from "next/link";
 import { db } from "@/db";
-import { assets, auditLogs, exportsTable, generations, projects, subscriptions, users, workspaces } from "@/drizzle/schema";
+import { assets, auditLogs, generations, subscriptions, users, workspaces } from "@/drizzle/schema";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
-import { getMembershipsForUser, requireUser } from "@/lib/auth-server";
+import { requireUser } from "@/lib/auth-server";
 import { ffmpegAvailable } from "@/lib/ffmpeg/export";
 import { getProviders } from "@/lib/ai/registry";
 
