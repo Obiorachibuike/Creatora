@@ -134,7 +134,7 @@ export const timelineClips = pgTable(
     text: text("text"),
     voiceoverId: text("voiceover_id"),
     keyframes: jsonb("keyframes"),
-    transitions: jsonb("transitions"),
+    transitions: jsonb("transitions").$type<string[]>(),
     isHidden: boolean("is_hidden").notNull().default(false),
     createdAt: ts(),
     updatedAt: upd(),
