@@ -2,7 +2,6 @@ import { count, desc, eq } from "drizzle-orm";
 import Link from "next/link";
 import { db } from "@/db";
 import { assets, exportsTable, generations, projects } from "@/drizzle/schema";
-import { formatCredits, parseDecimal } from "@/lib/credits";
 
 import { getMembershipsForUser, requireUser } from "@/lib/auth-server";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/Card";
